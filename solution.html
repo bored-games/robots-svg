@@ -26,9 +26,23 @@
     const greenID = urlParams.get('green');
     const yellowID = urlParams.get('yellow');
     const silverID = urlParams.get('silver');
-    var board = urlParams.get('b').split(',');
-    console.log(board);
+   // var board = urlParams.get('b').split(',');
+    var boardData = urlParams.get('b');
 
+
+
+// 2ZOZkZGRkZGTmZGRkZGRs8gAACBEAAAAAAAAACBEADLIJEASiQAAAAAAAAASiQA2zBOIAAAAAAAAAAAAAAAAM8kAACJMAAAAAAAiTAAkQDLIAAAQgQAAAAAAEIEAE4gyyCZIAAAAIGRkQAAAAAAmesgRgAAAADL//8gAAAAAEbLIAAAAAAAy///IAAAAAAAyyAAkQAAAEJGRgAAAAAAAMsgAE4gAIEQAIEQAAAAAADLMAAAAABKJABKJJkgAAAAyyQAAIkwAAAAAABGAACJMMsgAABCBACZIACRAAAAQgTbIAAAAAAARgAATiAAAAAAz7GRkZGRmbGRkZGRkZmxkdg==
+
+    board = Array.from(atob(decodeURIComponent(boardData)), (char) => char.charCodeAt());
+    console.log(board);
+    /*
+    var board = [];
+    for (let i = 0; i < boardData.length; i++) {
+      const hex = boardData.charCodeAt(i).toString("2");
+      board.push(hex)
+    }
+    */
+    // console.log(board);
 
     function makeRobot(posID, colorString) {
       const returnRobot = document.createElementNS('http://www.w3.org/2000/svg', 'use');
@@ -146,25 +160,25 @@
     svg.setAttribute("height", "1600");
     svg.setAttribute("viewBox", "0 0 1600 1600");
     svg.innerHTML = `<style>
-      .st0{fill:#CCCCCC;stroke:#1C1C1C000;stroke-width:2.2457;stroke-miterlimit:10;}
-      .st1r{fill:#ebc8c8;stroke:#1C1C1C000;stroke-width:2.5;stroke-miterlimit:10;}
-      .st1b{fill:#C8D5EB;stroke:#1C1C1C000;stroke-width:2.5;stroke-miterlimit:10;}
-      .st1g{fill:#d0ebc8;stroke:#1C1C1C000;stroke-width:2.5;stroke-miterlimit:10;}
-      .st1y{fill:#ebe6c8;stroke:#1C1C1C000;stroke-width:2.5;stroke-miterlimit:10;}
-      .st1s{fill:#ebebeb;stroke:#1C1C1C000;stroke-width:2.5;stroke-miterlimit:10;}
+      .st0{fill:#CCCCCC;stroke:#000000;stroke-width:2.2457;stroke-miterlimit:10;}
+      .st1r{fill:#ebc8c8;stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
+      .st1b{fill:#C8D5EB;stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
+      .st1g{fill:#d0ebc8;stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
+      .st1y{fill:#ebe6c8;stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
+      .st1s{fill:#ebebeb;stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
       .st3r{fill:none;stroke:#d14c4c;stroke-width:7.2153;stroke-miterlimit:10;}
-      .st4r{fill:#d14c4c;stroke:#1C1C1C000;stroke-width:2;stroke-miterlimit:10;}
+      .st4r{fill:#d14c4c;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
       .st3b{fill:none;stroke:#4C7DD1;stroke-width:7.2153;stroke-miterlimit:10;}
-      .st4b{fill:#4C7DD1;stroke:#1C1C1C000;stroke-width:2;stroke-miterlimit:10;}
+      .st4b{fill:#4C7DD1;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
       .st3g{fill:none;stroke:#6bd14c;stroke-width:7.2153;stroke-miterlimit:10;}
-      .st4g{fill:#6bd14c;stroke:#1C1C1C000;stroke-width:2;stroke-miterlimit:10;}
+      .st4g{fill:#6bd14c;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
       .st3y{fill:none;stroke:#d1bd4c;stroke-width:7.2153;stroke-miterlimit:10;}
-      .st4y{fill:#d1bd4c;stroke:#1C1C1C000;stroke-width:2;stroke-miterlimit:10;}
+      .st4y{fill:#d1bd4c;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
       .st3s{fill:none;stroke:#d1d1d1;stroke-width:7.2153;stroke-miterlimit:10;}
-      .st4s{fill:#d1d1d1;stroke:#1C1C1C000;stroke-width:2;stroke-miterlimit:10;}
-      .st5{fill:#BABABA;stroke:#1C1C1C000;stroke-width:2.5;stroke-miterlimit:10;}
-      .st6{fill:#5E5E5E;stroke:#1C1C1C000;stroke-width:2.5;stroke-miterlimit:10;}
-      .st7{fill:#FFFFFF;fill-opacity:0.7;stroke:#1C1C1C000;stroke-width:2;stroke-miterlimit:10;}
+      .st4s{fill:#d1d1d1;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
+      .st5{fill:#BABABA;stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
+      .st6{fill:#5E5E5E;stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
+      .st7{fill:#FFFFFF;fill-opacity:0.7;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
     </style>`;
 
 
@@ -595,7 +609,7 @@
 
 
   const vvv = document.getElementById('solution-svg');
-  downloadSvg(vvv, "soln.png");
+ // downloadSvg(vvv, "soln.png");
 
 
 
