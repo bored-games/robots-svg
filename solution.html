@@ -26,23 +26,17 @@
     const greenID = urlParams.get('green');
     const yellowID = urlParams.get('yellow');
     const silverID = urlParams.get('silver');
-   // var board = urlParams.get('b').split(',');
-    var boardData = urlParams.get('b');
-
-
-
-// 2ZOZkZGRkZGTmZGRkZGRs8gAACBEAAAAAAAAACBEADLIJEASiQAAAAAAAAASiQA2zBOIAAAAAAAAAAAAAAAAM8kAACJMAAAAAAAiTAAkQDLIAAAQgQAAAAAAEIEAE4gyyCZIAAAAIGRkQAAAAAAmesgRgAAAADL//8gAAAAAEbLIAAAAAAAy///IAAAAAAAyyAAkQAAAEJGRgAAAAAAAMsgAE4gAIEQAIEQAAAAAADLMAAAAABKJABKJJkgAAAAyyQAAIkwAAAAAABGAACJMMsgAABCBACZIACRAAAAQgTbIAAAAAAARgAATiAAAAAAz7GRkZGRmbGRkZGRkZmxkdg==
-
-    board = Array.from(atob(decodeURIComponent(boardData)), (char) => char.charCodeAt());
-    console.log(board);
-    /*
-    var board = [];
-    for (let i = 0; i < boardData.length; i++) {
-      const hex = boardData.charCodeAt(i).toString("2");
-      board.push(hex)
+    var board = urlParams.get('b').split(',');
+    var moves = urlParams.getAll('m');
+    
+    if (board.length != 256) {
+      board = Array.from(atob(decodeURIComponent(urlParams.get('b'))), (char) => char.charCodeAt());
     }
-    */
-    // console.log(board);
+
+    if (board.length != 256 ) {
+      console.error("Error: missing or malformed board data.");
+      return -1;
+    }
 
     function makeRobot(posID, colorString) {
       const returnRobot = document.createElementNS('http://www.w3.org/2000/svg', 'use');
@@ -52,9 +46,9 @@
       return returnRobot;
     }
     
-    function getArrowheads(color="red", string="r-") {
+    function getArrowheads(color="red", string="r") {
       var defMarker = document.createElementNS("http://www.w3.org/2000/svg", "marker");
-      defMarker.setAttribute("id", (string+"arrowhead"));
+      defMarker.setAttribute("id", (string+"-arrowhead"));
       defMarker.setAttribute("orient", "auto");
       defMarker.setAttribute("markerWidth", "100");
       defMarker.setAttribute("markerHeight", "200");
@@ -67,12 +61,29 @@
       return defMarker;
     }
       
-    function getPath(color="red", string="r-", d="M150, 250 L150,1065") {
+    function getPath(color="r", d="M150, 250 L150,1065") {
       const returnPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
-      returnPath.setAttribute("marker-end", "url(#"+string+"arrowhead)");
+      switch (color) {
+        case "r":
+          hexColor = "#e14a47";
+          break;
+        case "b":
+          hexColor = "#4C7DD1";
+          break;
+        case "g":
+          hexColor = "#6bd14c";
+          break;
+        case "y":
+          hexColor = "#c1a530";
+          break;
+        default:
+          hexColor = "#888888";
+          break;
+      }
+      returnPath.setAttribute("marker-end", "url(#"+color+"-arrowhead)");
       returnPath.setAttribute("d", d);
       returnPath.setAttribute("fill", "none");
-      returnPath.setAttribute("stroke", color);
+      returnPath.setAttribute("stroke", hexColor);
       returnPath.setAttribute("stroke-width", "45");
       returnPath.setAttribute("stroke-linecap", "round");
       returnPath.setAttribute("stroke-linejoin", "round");
@@ -80,7 +91,6 @@
       return returnPath;
     }
 
-    
     function getRect(x="0", y="0", width="100", height="100", fill = "red", stroke = "#blue", strokewidth="5", opacity="1") {
       returnRect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
       returnRect.setAttribute("x", x);
@@ -143,6 +153,7 @@
       move.setAttribute("y", y*100);
       return move;
     }
+
     function makeMoveText(x, y, num) {
       const moveText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
       moveText.setAttribute("x", x*100+50);
@@ -182,12 +193,18 @@
     </style>`;
 
 
+    var symbolRedRobot = getRobot('r');
+    var symbolBlueRobot = getRobot('b');
+    var symbolGreenRobot = getRobot('g');
+    var symbolYellowRobot = getRobot('y');
+    var symbolSilverRobot = getRobot('s');
+
     var defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
-    defs.appendChild(getArrowheads("#e14a47", "r-"));
-    defs.appendChild(getArrowheads("#4C7DD1", "b-"));
-    defs.appendChild(getArrowheads("#6bd14c", "g-"));
-    defs.appendChild(getArrowheads("#c1a530", "y-"));
-    defs.appendChild(getArrowheads("#888888", "s-"));
+    defs.appendChild(getArrowheads("#e14a47", "r"));
+    defs.appendChild(getArrowheads("#4C7DD1", "b"));
+    defs.appendChild(getArrowheads("#6bd14c", "g"));
+    defs.appendChild(getArrowheads("#c1a530", "y"));
+    defs.appendChild(getArrowheads("#888888", "s"));
 
 
     var symbolSqI = document.createElementNS("http://www.w3.org/2000/svg", "symbol");
@@ -293,31 +310,31 @@
     sq.appendChild(getRect("0", "0", "100", "100", "#e7d7ce", "#c5b8b0", "5", "1"));
     sq.appendChild(getRect("15", "15", "70", "70", "#f1e8e2", "#c8c9ca", "5", "0.6"));
 
-    const circ1 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    circ1.setAttribute("cx", "50");
-    circ1.setAttribute("cy", "50");
-    circ1.setAttribute("r", "18");
-    circ1.setAttribute("fill", "#fafafa");
-    circ1.setAttribute("stroke", "#303030");
-    circ1.setAttribute("stroke-width", "2");
-    circ1.setAttribute("opacity", ".8");
+    const moveNumCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    moveNumCircle.setAttribute("cx", "50");
+    moveNumCircle.setAttribute("cy", "50");
+    moveNumCircle.setAttribute("r", "18");
+    moveNumCircle.setAttribute("fill", "#fafafa");
+    moveNumCircle.setAttribute("stroke", "#303030");
+    moveNumCircle.setAttribute("stroke-width", "2");
+    moveNumCircle.setAttribute("opacity", ".8");
     const symbolMoveNum = document.createElementNS("http://www.w3.org/2000/svg", "symbol");
     symbolMoveNum.setAttribute("id", "move-num");
-    symbolMoveNum.appendChild(circ1);
+    symbolMoveNum.appendChild(moveNumCircle);
 
     
-    const path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path1.setAttribute("height", "1");
-    path1.setAttribute("width", "1");
-    path1.setAttribute("d", "M0,0.5 L0.25,0.07 0.75,.07 1,.5 0.75,.93 0.25,.93 0,0.5");
-    path1.setAttribute("fill", "#e19a97");
-    path1.setAttribute("stroke", "#ac8582");
-    path1.setAttribute("stroke-width", ".05");
+    const goalHexagonPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    goalHexagonPath.setAttribute("height", "1");
+    goalHexagonPath.setAttribute("width", "1");
+    goalHexagonPath.setAttribute("d", "M0,0.5 L0.25,0.07 0.75,.07 1,.5 0.75,.93 0.25,.93 0,0.5");
+    goalHexagonPath.setAttribute("fill", "#e19a97");
+    goalHexagonPath.setAttribute("stroke", "#ac8582");
+    goalHexagonPath.setAttribute("stroke-width", ".05");
     const symbolGoal = document.createElementNS("http://www.w3.org/2000/svg", "symbol");
     symbolGoal.setAttribute("id", "goal");
     symbolGoal.setAttribute("viewBox", "-.04 -0.04 16 16");
     symbolGoal.setAttribute("transform", "scale(0.8, .8) translate(10, 10)");
-    symbolGoal.appendChild(path1);
+    symbolGoal.appendChild(goalHexagonPath);
 
 
     const blkRect = getRect("0", "0", "100", "100", "#7a776d", "none", "5", "1");
@@ -335,16 +352,8 @@
     symbolBlk.appendChild(blkPolyline);
 
 
-    var symbolRedRobot = getRobot('r');
-    var symbolBlueRobot = getRobot('b');
-    var symbolGreenRobot = getRobot('g');
-    var symbolYellowRobot = getRobot('y');
-    var symbolSilverRobot = getRobot('s');
-
-
     // attach symbols to the container
     svg.appendChild(defs);
-
     svg.appendChild(symbolSqI);
     svg.appendChild(symbolSqII);
     svg.appendChild(symbolSqL);
@@ -357,13 +366,11 @@
     svg.appendChild(symbolSqIDl);
     svg.appendChild(sq);
     svg.appendChild(symbolBlk);
-    
     svg.appendChild(symbolRedRobot);
     svg.appendChild(symbolBlueRobot);
     svg.appendChild(symbolGreenRobot);
     svg.appendChild(symbolYellowRobot);
     svg.appendChild(symbolSilverRobot);
-    
     svg.appendChild(symbolMoveNum);
     svg.appendChild(symbolGoal);
 
@@ -487,13 +494,6 @@
       svg.appendChild(goalToken);
     }
 
-    // add paths  
-    svg.appendChild(getPath("#e14a47", "r-", "M150, 250 L150,1085"));
-    svg.appendChild(getPath("#e14a47", "r-", "M150, 1150 1185,1150"));
-    svg.appendChild(getPath("#c1a530", "y-", "M1350, 1250 215,1250")); // (0.65 off from target)
-    svg.appendChild(getPath("#6bd14c", "g-", "M1350, 1350 115,1350")); 
-    svg.appendChild(getPath("#4C7DD1", "b-", "M1350, 1450 115,1450")); 
-    svg.appendChild(getPath("#888888", "s-", "M1350, 1550 115,1550")); 
 
     // add robots
     if (redID != null) {
@@ -512,43 +512,37 @@
       svg.appendChild( makeRobot(silverID, 's') );
     }
 
-    // add move numbers
-    svg.appendChild( makeMoveNumber(13, 12) );
-    svg.appendChild( makeMoveText(13, 12, "1") );
-
-    svg.appendChild( makeMoveNumber(1, 2) );
-    svg.appendChild( makeMoveText(1, 2, "2") );
-
-    svg.appendChild( makeMoveNumber(13, 13) );
-    svg.appendChild( makeMoveText(13, 13, "3") );
-
-    svg.appendChild( makeMoveNumber(13, 14) );
-    svg.appendChild( makeMoveText(13, 14, "5") );
-
-    svg.appendChild( makeMoveNumber(13, 15) );
-    svg.appendChild( makeMoveText(13, 15, "4") );
-
-    svg.appendChild( makeMoveNumber(1, 11) );
-    svg.appendChild( makeMoveText(1, 11, "6") );
+    for (cnt = 0; cnt < moves.length; cnt++) {
+        m = moves[cnt].split(",");
+        m[1] = parseInt(m[1]);
+        m[2] = parseInt(m[2]);
+        m[3] = parseInt(m[3]);
+        m[4] = parseInt(m[4]);
+        console.log(m);
+        if (m[3] > m[1]) { // going right
+          svg.appendChild(getPath(m[0], "M"+(100*m[1]+50)+", "+(100*m[2]+50)+" "+(100*m[3]-15)+","+(100*m[4]+50)+"")); 
+        } else if (m[1] > m[3]) { // going left
+          svg.appendChild(getPath(m[0], "M"+(100*m[1]+50)+", "+(100*m[2]+50)+" "+(100*m[3]+115)+","+(100*m[4]+50)+"")); 
+        } else if (m[2] > m[4]) { // going up
+          svg.appendChild(getPath(m[0], "M"+(100*m[1]+50)+", "+(100*m[2]+50)+" "+(100*m[3]+50)+","+(100*m[4]+115)+"")); 
+        } else if (m[4] > m[2]) {// going down
+          svg.appendChild(getPath(m[0], "M"+(100*m[1]+50)+", "+(100*m[2]+50)+" "+(100*m[3]+50)+","+(100*m[4]-15)+"")); 
+        } else {
+          svg.appendChild(getPath(m[0], "M"+(100*m[1]+50)+", "+(100*m[2]+50)+" "+(100*m[3]+50)+","+(100*m[4]+50)+"")); 
+        }
+        
+        svg.appendChild( makeMoveNumber(m[1], m[2]) );
+        svg.appendChild( makeMoveText(m[1], m[2], cnt+1) );
+    }
+    
 
     // attach container to document
     document.getElementById("robots-svg").appendChild(svg);
     document.title = "NO ERRORS";
 
-
-
-
-
-
-
-
-
-
-  
   });
 
   f();
-
 
 
     
@@ -609,7 +603,7 @@
 
 
   const vvv = document.getElementById('solution-svg');
- // downloadSvg(vvv, "soln.png");
+  downloadSvg(vvv, "soln.png");
 
 
 
