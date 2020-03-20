@@ -1,7 +1,7 @@
 const f = (() => {
 
   const urlParams = new URLSearchParams(window.location.search);
-  const goalID = urlParams.get('goal');
+  const goalID = urlParams.get('goal').split(',');
   const redID = urlParams.get('red');
   const blueID = urlParams.get('blue');
   const greenID = urlParams.get('green');
@@ -303,8 +303,6 @@ const f = (() => {
   goalHexagonPath.setAttribute("height", "1");
   goalHexagonPath.setAttribute("width", "1");
   goalHexagonPath.setAttribute("d", "M0,0.5 L0.25,0.07 0.75,.07 1,.5 0.75,.93 0.25,.93 0,0.5");
-  goalHexagonPath.setAttribute("fill", "#e19a97");
-  goalHexagonPath.setAttribute("stroke", "#ac8582");
   goalHexagonPath.setAttribute("stroke-width", ".05");
   const symbolGoal = document.createElementNS("http://www.w3.org/2000/svg", "symbol");
   symbolGoal.setAttribute("id", "goal");
@@ -457,11 +455,35 @@ const f = (() => {
     }
   }
 
-  if (goalID != null) {
+  if (["r", "g", "b", "y", "s"].includes(goalID[0]) && goalID[1] >= 0) {
     const goalToken = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+    
+    switch (goalID[0]) {
+      case 'r':
+        goalHexagonPath.setAttribute("fill", "#e19a97");
+        goalHexagonPath.setAttribute("stroke", "#ac8582");
+        break;
+      case 'g':
+        goalHexagonPath.setAttribute("fill", "#6bd14c");
+        goalHexagonPath.setAttribute("stroke", "#8bab81");
+        break;
+      case 'b':
+        goalHexagonPath.setAttribute("fill", "#4C7DD1");
+        goalHexagonPath.setAttribute("stroke", "#8291ac");
+        break;
+      case 'y':
+        goalHexagonPath.setAttribute("fill", "#c1a530");
+        goalHexagonPath.setAttribute("stroke", "#aca482");
+        break;
+      case 's':
+        goalHexagonPath.setAttribute("fill", "#888888");
+        goalHexagonPath.setAttribute("stroke", "#777777");
+        break;
+    }
+    
     goalToken.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#goal');
-    goalToken.setAttribute("x", 100 * (goalID % 16));
-    goalToken.setAttribute("y", 100 * Math.floor(goalID / 16));
+    goalToken.setAttribute("x", 100 * (goalID[1] % 16));
+    goalToken.setAttribute("y", 100 * Math.floor(goalID[1] / 16));
     svg.appendChild(goalToken);
   }
 
