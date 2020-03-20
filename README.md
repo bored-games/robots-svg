@@ -19,3 +19,6 @@ A javascript SVG and PNG generator for visualizing puzzle solutions
   ### Example:
 
   > localhost/robots-svg/solution.html?goal=166&red=33&green=221&blue=237&yellow=205&silver=253&b=2ZOZkZGRkZGTmZGRkZGRs8gAACBEAAAAAAAAACBEADLIJEASiQAAAAAAAAASiQA2zBOIAAAAAAAAAAAAAAAAM8kAACJMAAAAAAAiTAAkQDLIAAAQgQAAAAAAEIEAE4gyyCZIAAAAIGRkQAAAAAAmesgRgAAAADL//8gAAAAAEbLIAAAAAAAy///IAAAAAAAyyAAkQAAAEJGRgAAAAAAAMsgAE4gAIEQAIEQAAAAAADLMAAAAABKJABKJJkgAAAAyyQAAIkwAAAAAABGAACJMMsgAABCBACZIACRAAAAQgTbIAAAAAAARgAATiAAAAAAz7GRkZGRmbGRkZGRkZmxkdg==&m=g,13,13,7,13&m=g,7,13,7,9&m=r,1,2,3,2&m=r,3,2,3,0&m=r,3,0,2,0&m=r,2,0,2,9&m=r,2,9,6,9&m=r,6,9,6,10
+
+  ### Result:
+  <p align="center"><img src="examples/soln.png" width="800px" alt="" /></p>
