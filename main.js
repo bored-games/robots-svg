@@ -9,6 +9,7 @@ const f = (() => {
   const silverID = urlParams.get('silver');
   var board = urlParams.get('b').split(',');
   var moves = urlParams.getAll('m');
+  var hide = urlParams.get('hide');
   
   if (board.length != 256) {
     board = Array.from(atob(decodeURIComponent(urlParams.get('b'))), (char) => char.charCodeAt());
@@ -511,27 +512,30 @@ const f = (() => {
     svg.appendChild( makeRobot(silverID, 's') );
   }
 
-  for (cnt = 0; cnt < moves.length; cnt++) {
-      m = moves[cnt].split(",");
-      m[1] = parseInt(m[1]);
-      m[2] = parseInt(m[2]);
-      m[3] = parseInt(m[3]);
-      m[4] = parseInt(m[4]);
-      console.log(m);
-      if (m[3] > m[1]) { // going right
-        svg.appendChild(getPath(m[0], "M"+(100*m[1]+50)+", "+(100*m[2]+50)+" "+(100*m[3]-15)+","+(100*m[4]+50)+"")); 
-      } else if (m[1] > m[3]) { // going left
-        svg.appendChild(getPath(m[0], "M"+(100*m[1]+50)+", "+(100*m[2]+50)+" "+(100*m[3]+115)+","+(100*m[4]+50)+"")); 
-      } else if (m[2] > m[4]) { // going up
-        svg.appendChild(getPath(m[0], "M"+(100*m[1]+50)+", "+(100*m[2]+50)+" "+(100*m[3]+50)+","+(100*m[4]+115)+"")); 
-      } else if (m[4] > m[2]) {// going down
-        svg.appendChild(getPath(m[0], "M"+(100*m[1]+50)+", "+(100*m[2]+50)+" "+(100*m[3]+50)+","+(100*m[4]-15)+"")); 
-      } else {
-        svg.appendChild(getPath(m[0], "M"+(100*m[1]+50)+", "+(100*m[2]+50)+" "+(100*m[3]+50)+","+(100*m[4]+50)+"")); 
-      }
-      
-      svg.appendChild( makeMoveNumber(m[1], m[2]) );
-      svg.appendChild( makeMoveText(m[1], m[2], cnt+1) );
+  console.log(hide);
+  if (hide == null) {
+    for (cnt = 0; cnt < moves.length; cnt++) {
+        m = moves[cnt].split(",");
+        m[1] = parseInt(m[1]);
+        m[2] = parseInt(m[2]);
+        m[3] = parseInt(m[3]);
+        m[4] = parseInt(m[4]);
+        console.log(m);
+        if (m[3] > m[1]) { // going right
+          svg.appendChild(getPath(m[0], "M"+(100*m[1]+50)+", "+(100*m[2]+50)+" "+(100*m[3]-15)+","+(100*m[4]+50)+"")); 
+        } else if (m[1] > m[3]) { // going left
+          svg.appendChild(getPath(m[0], "M"+(100*m[1]+50)+", "+(100*m[2]+50)+" "+(100*m[3]+115)+","+(100*m[4]+50)+"")); 
+        } else if (m[2] > m[4]) { // going up
+          svg.appendChild(getPath(m[0], "M"+(100*m[1]+50)+", "+(100*m[2]+50)+" "+(100*m[3]+50)+","+(100*m[4]+115)+"")); 
+        } else if (m[4] > m[2]) {// going down
+          svg.appendChild(getPath(m[0], "M"+(100*m[1]+50)+", "+(100*m[2]+50)+" "+(100*m[3]+50)+","+(100*m[4]-15)+"")); 
+        } else {
+          svg.appendChild(getPath(m[0], "M"+(100*m[1]+50)+", "+(100*m[2]+50)+" "+(100*m[3]+50)+","+(100*m[4]+50)+"")); 
+        }
+        
+        svg.appendChild( makeMoveNumber(m[1], m[2]) );
+        svg.appendChild( makeMoveText(m[1], m[2], cnt+1) );
+    }
   }
   
 
@@ -602,4 +606,4 @@ function downloadSvg(svg, fileName) {
 
 f();
 const vvv = document.getElementById('solution-svg');
-downloadSvg(vvv, "soln.png");
+//downloadSvg(vvv, "soln.png");
