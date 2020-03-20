@@ -45,10 +45,16 @@
       font-size: 1.3rem;
     }
 
+    h2 {
+      font-weight: 400;
+      margin: 0 0 .5rem 0;
+      padding: 0;
+      font-size: 1.2rem;
+    }
+
     span {
       font-weight: 200;
       color: #777;
-      margin-left: 0.5rem;
     }
 
     a {
@@ -70,7 +76,36 @@
     img {
       max-width: 100%;
       margin-top: 1.0rem;
+      width: 100%;
     }
+
+    object {
+      min-height: 400px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .square {
+      margin-top: 1.0rem;
+      position: relative;
+    }
+
+    .square::after {
+      display: block;
+      height: 0;
+      content: '';
+      padding-top: 100%;
+    }
+
+    .inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
     
   </style>
 
@@ -80,37 +115,57 @@
   <div class="container">
     <main>
       <div class="box">
-        <h1>Example 0<span>Adding <tt>&amp;hide</tt> suppresses paths</span></h1>
-        <img src="soln0.png" alt="" />
+        <h1>Example 1: <span>Embed a dynamic SVG</span></h1>
+        <h2>Can you find a 2-robot, 6-move solution?</h2>
+        <div class="square">
+          <div class="inner">
+            <object type="image/svg+xml" data="../solution.svg?goal=r,166&red=33&green=221&blue=29&yellow=213&silver=100&b=2ZOZkZGRkZGTmZGRkZGRs8gAACBEAAAAAAAAACBEADLIJEASiQAAAAAAAAASiQA2zBOIAAAAAAAAAAAAAAAAM8kAACJMAAAAAAAiTAAkQDLIAAAQgQAAAAAAEIEAE4gyyCZIAAAAIGRkQAAAAAAmesgRgAAAADL//8gAAAAAEbLIAAAAAAAy///IAAAAAAAyyAAkQAAAEJGRgAAAAAAAMsgAE4gAIEQAIEQAAAAAADLMAAAAABKJABKJJkgAAAAyyQAAIkwAAAAAABGAACJMMsgAABCBACZIACRAAAAQgTbIAAAAAAARgAATiAAAAAAz7GRkZGRmbGRkZGRkZmxkdg==&m=g,13,13,7,13&m=g,7,13,7,9&m=r,1,2,3,2&m=r,3,2,3,0&m=r,3,0,2,0&m=r,2,0,2,9&m=r,2,9,6,9&m=r,6,9,6,10"></object>
+          </div>
+        </div>
       </div>
-      <a href="../solution.html?goal=r,166&red=33&green=221&blue=237&yellow=205&silver=253&b=2ZOZkZGRkZGTmZGRkZGRs8gAACBEAAAAAAAAACBEADLIJEASiQAAAAAAAAASiQA2zBOIAAAAAAAAAAAAAAAAM8kAACJMAAAAAAAiTAAkQDLIAAAQgQAAAAAAEIEAE4gyyCZIAAAAIGRkQAAAAAAmesgRgAAAADL//8gAAAAAEbLIAAAAAAAy///IAAAAAAAyyAAkQAAAEJGRgAAAAAAAMsgAE4gAIEQAIEQAAAAAADLMAAAAABKJABKJJkgAAAAyyQAAIkwAAAAAABGAACJMMsgAABCBACZIACRAAAAQgTbIAAAAAAARgAATiAAAAAAz7GRkZGRmbGRkZGRkZmxkdg==&m=g,13,13,7,13&m=g,7,13,7,9&m=r,1,2,3,2&m=r,3,2,3,0&m=r,3,0,2,0&m=r,2,0,2,9&m=r,2,9,6,9&m=r,6,9,6,10&hide=true">
-        solution.html?goal=r,166&red=33&green=221&blue=237&yellow=205&silver=253&b=2ZOZkZGRkZGTmZGRkZGRs8gAACBEAAAAAAAAACBEADLIJEASiQAAAAAAAAASiQA2zBOIAAAAAAAAAAAAAAAAM8kAACJMAAAAAAAiTAAkQDLIAAAQgQAAAAAAEIEAE4gyyCZIAAAAIGRkQAAAAAAmesgRgAAAADL//8gAAAAAEbLIAAAAAAAy///IAAAAAAAyyAAkQAAAEJGRgAAAAAAAMsgAE4gAIEQAIEQAAAAAADLMAAAAABKJABKJJkgAAAAyyQAAIkwAAAAAABGAACJMMsgAABCBACZIACRAAAAQgTbIAAAAAAARgAATiAAAAAAz7GRkZGRmbGRkZGRkZmxkdg==&m=g,13,13,7,13&m=g,7,13,7,9&m=r,1,2,3,2&m=r,3,2,3,0&m=r,3,0,2,0&m=r,2,0,2,9&m=r,2,9,6,9&m=r,6,9,6,10&hide=true
+      <a href="../solution.svg?goal=r,166&red=33&green=221&blue=29&yellow=213&silver=100&b=2ZOZkZGRkZGTmZGRkZGRs8gAACBEAAAAAAAAACBEADLIJEASiQAAAAAAAAASiQA2zBOIAAAAAAAAAAAAAAAAM8kAACJMAAAAAAAiTAAkQDLIAAAQgQAAAAAAEIEAE4gyyCZIAAAAIGRkQAAAAAAmesgRgAAAADL//8gAAAAAEbLIAAAAAAAy///IAAAAAAAyyAAkQAAAEJGRgAAAAAAAMsgAE4gAIEQAIEQAAAAAADLMAAAAABKJABKJJkgAAAAyyQAAIkwAAAAAABGAACJMMsgAABCBACZIACRAAAAQgTbIAAAAAAARgAATiAAAAAAz7GRkZGRmbGRkZGRkZmxkdg==&m=g,13,13,7,13&m=g,7,13,7,9&m=r,1,2,3,2&m=r,3,2,3,0&m=r,3,0,2,0&m=r,2,0,2,9&m=r,2,9,6,9&m=r,6,9,6,10">
+        solution.svg?goal=r,166&red=33&green=221&blue=29&yellow=213&silver=100&b=2ZOZkZGRkZGTmZGRkZGRs8gAACBEAAAAAAAAACBEADLIJEASiQAAAAAAAAASiQA2zBOIAAAAAAAAAAAAAAAAM8kAACJMAAAAAAAiTAAkQDLIAAAQgQAAAAAAEIEAE4gyyCZIAAAAIGRkQAAAAAAmesgRgAAAADL//8gAAAAAEbLIAAAAAAAy///IAAAAAAAyyAAkQAAAEJGRgAAAAAAAMsgAE4gAIEQAIEQAAAAAADLMAAAAABKJABKJJkgAAAAyyQAAIkwAAAAAABGAACJMMsgAABCBACZIACRAAAAQgTbIAAAAAAARgAATiAAAAAAz7GRkZGRmbGRkZGRkZmxkdg==&m=g,13,13,7,13&m=g,7,13,7,9&m=r,1,2,3,2&m=r,3,2,3,0&m=r,3,0,2,0&m=r,2,0,2,9&m=r,2,9,6,9&m=r,6,9,6,10
       </a>
     </main>
     <main>
       <div class="box">
-        <h1>Example 1<span>Can you find a 2-robot, 6-move solution?</span></h1>
-        <img src="soln.png" alt="" />
+        <h1>Example 2: <span>Add <tt>&amp;hide</tt> suppresses all paths</span></h1>
+        <h2>Can you find a 3-robot, 7-move solution?</h2>
+        <div class="square">
+          <div class="inner">
+            <object type="image/svg+xml" data="../solution.svg?goal=b,166&red=33&green=221&blue=29&yellow=213&silver=100&b=2ZOZkZGRkZGTmZGRkZGRs8gAACBEAAAAAAAAACBEADLIJEASiQAAAAAAAAASiQA2zBOIAAAAAAAAAAAAAAAAM8kAACJMAAAAAAAiTAAkQDLIAAAQgQAAAAAAEIEAE4gyyCZIAAAAIGRkQAAAAAAmesgRgAAAADL//8gAAAAAEbLIAAAAAAAy///IAAAAAAAyyAAkQAAAEJGRgAAAAAAAMsgAE4gAIEQAIEQAAAAAADLMAAAAABKJABKJJkgAAAAyyQAAIkwAAAAAABGAACJMMsgAABCBACZIACRAAAAQgTbIAAAAAAARgAATiAAAAAAz7GRkZGRmbGRkZGRkZmxkdg==&m=g,13,13,7,13&m=g,7,13,7,9&m=r,1,2,3,2&m=r,3,2,3,0&m=r,3,0,2,0&m=r,2,0,2,9&m=r,2,9,6,9&m=r,6,9,6,10&hide=true"></object>
+          </div>
+        </div>
       </div>
-      <a href="../solution.html?goal=r,166&red=33&green=221&blue=237&yellow=205&silver=253&b=2ZOZkZGRkZGTmZGRkZGRs8gAACBEAAAAAAAAACBEADLIJEASiQAAAAAAAAASiQA2zBOIAAAAAAAAAAAAAAAAM8kAACJMAAAAAAAiTAAkQDLIAAAQgQAAAAAAEIEAE4gyyCZIAAAAIGRkQAAAAAAmesgRgAAAADL//8gAAAAAEbLIAAAAAAAy///IAAAAAAAyyAAkQAAAEJGRgAAAAAAAMsgAE4gAIEQAIEQAAAAAADLMAAAAABKJABKJJkgAAAAyyQAAIkwAAAAAABGAACJMMsgAABCBACZIACRAAAAQgTbIAAAAAAARgAATiAAAAAAz7GRkZGRmbGRkZGRkZmxkdg==&m=g,13,13,7,13&m=g,7,13,7,9&m=r,1,2,3,2&m=r,3,2,3,0&m=r,3,0,2,0&m=r,2,0,2,9&m=r,2,9,6,9&m=r,6,9,6,10">
-        solution.html?goal=r,166&red=33&green=221&blue=237&yellow=205&silver=253&b=2ZOZkZGRkZGTmZGRkZGRs8gAACBEAAAAAAAAACBEADLIJEASiQAAAAAAAAASiQA2zBOIAAAAAAAAAAAAAAAAM8kAACJMAAAAAAAiTAAkQDLIAAAQgQAAAAAAEIEAE4gyyCZIAAAAIGRkQAAAAAAmesgRgAAAADL//8gAAAAAEbLIAAAAAAAy///IAAAAAAAyyAAkQAAAEJGRgAAAAAAAMsgAE4gAIEQAIEQAAAAAADLMAAAAABKJABKJJkgAAAAyyQAAIkwAAAAAABGAACJMMsgAABCBACZIACRAAAAQgTbIAAAAAAARgAATiAAAAAAz7GRkZGRmbGRkZGRkZmxkdg==&m=g,13,13,7,13&m=g,7,13,7,9&m=r,1,2,3,2&m=r,3,2,3,0&m=r,3,0,2,0&m=r,2,0,2,9&m=r,2,9,6,9&m=r,6,9,6,10
+      <a href="../solution.svg?goal=b,166&red=33&green=221&blue=29&yellow=213&silver=100&b=2ZOZkZGRkZGTmZGRkZGRs8gAACBEAAAAAAAAACBEADLIJEASiQAAAAAAAAASiQA2zBOIAAAAAAAAAAAAAAAAM8kAACJMAAAAAAAiTAAkQDLIAAAQgQAAAAAAEIEAE4gyyCZIAAAAIGRkQAAAAAAmesgRgAAAADL//8gAAAAAEbLIAAAAAAAy///IAAAAAAAyyAAkQAAAEJGRgAAAAAAAMsgAE4gAIEQAIEQAAAAAADLMAAAAABKJABKJJkgAAAAyyQAAIkwAAAAAABGAACJMMsgAABCBACZIACRAAAAQgTbIAAAAAAARgAATiAAAAAAz7GRkZGRmbGRkZGRkZmxkdg==&m=g,13,13,7,13&m=g,7,13,7,9&m=r,1,2,3,2&m=r,3,2,3,0&m=r,3,0,2,0&m=r,2,0,2,9&m=r,2,9,6,9&m=r,6,9,6,10&hide=true">
+        solution.svg?goal=b,166&red=33&green=221&blue=29&yellow=213&silver=100&b=2ZOZkZGRkZGTmZGRkZGRs8gAACBEAAAAAAAAACBEADLIJEASiQAAAAAAAAASiQA2zBOIAAAAAAAAAAAAAAAAM8kAACJMAAAAAAAiTAAkQDLIAAAQgQAAAAAAEIEAE4gyyCZIAAAAIGRkQAAAAAAmesgRgAAAADL//8gAAAAAEbLIAAAAAAAy///IAAAAAAAyyAAkQAAAEJGRgAAAAAAAMsgAE4gAIEQAIEQAAAAAADLMAAAAABKJABKJJkgAAAAyyQAAIkwAAAAAABGAACJMMsgAABCBACZIACRAAAAQgTbIAAAAAAARgAATiAAAAAAz7GRkZGRmbGRkZGRkZmxkdg==&m=g,13,13,7,13&m=g,7,13,7,9&m=r,1,2,3,2&m=r,3,2,3,0&m=r,3,0,2,0&m=r,2,0,2,9&m=r,2,9,6,9&m=r,6,9,6,10&hide=true
       </a>
     </main>
     <main>
       <div class="box">
-        <h1>Example 2<span>Can you find a 3-robot, 9-move solution?</span></h1>
-        <img src="soln2.png" alt="" />
+        <h1>Example 3: <span>Embed as a PNG (to do)</span></h1>
+        <h2>Can you find a 3-robot, 9-move solution?</h2>
+        <div class="square">
+          <div class="inner">
+            <object type="image/svg+xml" data="../solution.svg?goal=b,166&red=33&green=221&blue=29&yellow=213&silver=100&b=2ZOZkZGRkZGTmZGRkZGRs8gAACBEAAAAAAAAACBEADLIJEASiQAAAAAAAAASiQA2zBOIAAAAAAAAAAAAAAAAM8kAACJMAAAAAAAiTAAkQDLIAAAQgQAAAAAAEIEAE4gyyCZIAAAAIGRkQAAAAAAmesgRgAAAADL//8gAAAAAEbLIAAAAAAAy///IAAAAAAAyyAAkQAAAEJGRgAAAAAAAMsgAE4gAIEQAIEQAAAAAADLMAAAAABKJABKJJkgAAAAyyQAAIkwAAAAAABGAACJMMsgAABCBACZIACRAAAAQgTbIAAAAAAARgAATiAAAAAAz7GRkZGRmbGRkZGRkZmxkdg==&m=b,13,1,13,0&m=b,13,0,9,0&m=b,9,0,9,10&m=b,9,10,3,10&m=b,3,10,3,0&m=b,3,0,8,0&m=y,5,13,5,0&m=b,8,0,6,0&m=b,6,0,6,10"></object>
+          </div>
+        </div>
       </div>
-      <a href="../solution.html?goal=b,166&red=33&green=221&blue=29&yellow=213&silver=100&b=2ZOZkZGRkZGTmZGRkZGRs8gAACBEAAAAAAAAACBEADLIJEASiQAAAAAAAAASiQA2zBOIAAAAAAAAAAAAAAAAM8kAACJMAAAAAAAiTAAkQDLIAAAQgQAAAAAAEIEAE4gyyCZIAAAAIGRkQAAAAAAmesgRgAAAADL//8gAAAAAEbLIAAAAAAAy///IAAAAAAAyyAAkQAAAEJGRgAAAAAAAMsgAE4gAIEQAIEQAAAAAADLMAAAAABKJABKJJkgAAAAyyQAAIkwAAAAAABGAACJMMsgAABCBACZIACRAAAAQgTbIAAAAAAARgAATiAAAAAAz7GRkZGRmbGRkZGRkZmxkdg==&m=b,13,1,13,0&m=b,13,0,9,0&m=b,9,0,9,10&m=b,9,10,3,10&m=b,3,10,3,0&m=b,3,0,8,0&m=y,5,13,5,0&m=b,8,0,6,0&m=b,6,0,6,10">
-        solution.html?goal=b,166&red=33&green=221&blue=29&yellow=213&silver=100&b=2ZOZkZGRkZGTmZGRkZGRs8gAACBEAAAAAAAAACBEADLIJEASiQAAAAAAAAASiQA2zBOIAAAAAAAAAAAAAAAAM8kAACJMAAAAAAAiTAAkQDLIAAAQgQAAAAAAEIEAE4gyyCZIAAAAIGRkQAAAAAAmesgRgAAAADL//8gAAAAAEbLIAAAAAAAy///IAAAAAAAyyAAkQAAAEJGRgAAAAAAAMsgAE4gAIEQAIEQAAAAAADLMAAAAABKJABKJJkgAAAAyyQAAIkwAAAAAABGAACJMMsgAABCBACZIACRAAAAQgTbIAAAAAAARgAATiAAAAAAz7GRkZGRmbGRkZGRkZmxkdg==&m=b,13,1,13,0&m=b,13,0,9,0&m=b,9,0,9,10&m=b,9,10,3,10&m=b,3,10,3,0&m=b,3,0,8,0&m=y,5,13,5,0&m=b,8,0,6,0&m=b,6,0,6,10
-      </a>
+        <a href="../solution.svg?goal=b,166&red=33&green=221&blue=29&yellow=213&silver=100&b=2ZOZkZGRkZGTmZGRkZGRs8gAACBEAAAAAAAAACBEADLIJEASiQAAAAAAAAASiQA2zBOIAAAAAAAAAAAAAAAAM8kAACJMAAAAAAAiTAAkQDLIAAAQgQAAAAAAEIEAE4gyyCZIAAAAIGRkQAAAAAAmesgRgAAAADL//8gAAAAAEbLIAAAAAAAy///IAAAAAAAyyAAkQAAAEJGRgAAAAAAAMsgAE4gAIEQAIEQAAAAAADLMAAAAABKJABKJJkgAAAAyyQAAIkwAAAAAABGAACJMMsgAABCBACZIACRAAAAQgTbIAAAAAAARgAATiAAAAAAz7GRkZGRmbGRkZGRkZmxkdg==&m=b,13,1,13,0&m=b,13,0,9,0&m=b,9,0,9,10&m=b,9,10,3,10&m=b,3,10,3,0&m=b,3,0,8,0&m=y,5,13,5,0&m=b,8,0,6,0&m=b,6,0,6,10">
+          solution.svg?goal=b,166&red=33&green=221&blue=29&yellow=213&silver=100&b=2ZOZkZGRkZGTmZGRkZGRs8gAACBEAAAAAAAAACBEADLIJEASiQAAAAAAAAASiQA2zBOIAAAAAAAAAAAAAAAAM8kAACJMAAAAAAAiTAAkQDLIAAAQgQAAAAAAEIEAE4gyyCZIAAAAIGRkQAAAAAAmesgRgAAAADL//8gAAAAAEbLIAAAAAAAy///IAAAAAAAyyAAkQAAAEJGRgAAAAAAAMsgAE4gAIEQAIEQAAAAAADLMAAAAABKJABKJJkgAAAAyyQAAIkwAAAAAABGAACJMMsgAABCBACZIACRAAAAQgTbIAAAAAAARgAATiAAAAAAz7GRkZGRmbGRkZGRkZmxkdg==&m=b,13,1,13,0&m=b,13,0,9,0&m=b,9,0,9,10&m=b,9,10,3,10&m=b,3,10,3,0&m=b,3,0,8,0&m=y,5,13,5,0&m=b,8,0,6,0&m=b,6,0,6,10
+        </a>
     </main>
     <main>
       <div class="box">
-        <h1>Example 3<span>Can you find an 8-move solution?</span></h1>
-        <img src="soln3.png" alt="" />
+        <h1>Example 4: <span>Use comma-separated list for encoded board</span></h1>
+        <h2>Can you find an 8-move solution?</h2>
+        <div class="square">
+          <div class="inner">
+            <object type="image/svg+xml" data="../solution.svg?goal=g,166&red=33&green=221&blue=29&yellow=213&silver=100&b=217,147,153,145,145,145,145,145,147,153,145,145,145,145,145,179,200,0,0,32,68,0,0,0,0,0,0,0,32,68,0,50,200,36,64,18,137,0,0,0,0,0,0,0,18,137,0,54,204,19,136,0,0,0,0,0,0,0,0,0,0,0,0,51,201,0,0,34,76,0,0,0,0,0,34,76,0,36,64,50,200,0,0,16,129,0,0,0,0,0,16,129,0,19,136,50,200,38,72,0,0,0,32,100,100,64,0,0,0,0,38,122,200,17,128,0,0,0,50,256,257,200,0,0,0,0,17,178,200,0,0,0,0,0,50,258,259,200,0,0,0,0,0,50,200,0,36,64,0,0,16,145,145,128,0,0,0,0,0,50,200,0,19,136,0,32,68,0,32,68,0,0,0,0,0,50,204,0,0,0,0,18,137,0,18,137,38,72,0,0,0,50,201,0,0,34,76,0,0,0,0,0,17,128,0,34,76,50,200,0,0,16,129,0,38,72,0,36,64,0,0,16,129,54,200,0,0,0,0,0,17,128,0,19,136,0,0,0,0,51,236,100,100,100,100,102,108,100,100,100,100,100,102,108,100,118&m=g,13,13,7,13&m=g,7,13,7,9&m=s,4,6,2,6&m=s,2,6,2,9&m=s,2,9,0,9&m=g,7,9,1,9&m=g,1,9,1,7&m=g,1,7,6,7&m=g,6,7,6,10"></object>
+          </div>
+        </div>
       </div>
-      <a href="../solution.html?goal=g,166&red=33&green=221&blue=29&yellow=213&silver=100&b=217,147,153,145,145,145,145,145,147,153,145,145,145,145,145,179,200,0,0,32,68,0,0,0,0,0,0,0,32,68,0,50,200,36,64,18,137,0,0,0,0,0,0,0,18,137,0,54,204,19,136,0,0,0,0,0,0,0,0,0,0,0,0,51,201,0,0,34,76,0,0,0,0,0,34,76,0,36,64,50,200,0,0,16,129,0,0,0,0,0,16,129,0,19,136,50,200,38,72,0,0,0,32,100,100,64,0,0,0,0,38,122,200,17,128,0,0,0,50,256,257,200,0,0,0,0,17,178,200,0,0,0,0,0,50,258,259,200,0,0,0,0,0,50,200,0,36,64,0,0,16,145,145,128,0,0,0,0,0,50,200,0,19,136,0,32,68,0,32,68,0,0,0,0,0,50,204,0,0,0,0,18,137,0,18,137,38,72,0,0,0,50,201,0,0,34,76,0,0,0,0,0,17,128,0,34,76,50,200,0,0,16,129,0,38,72,0,36,64,0,0,16,129,54,200,0,0,0,0,0,17,128,0,19,136,0,0,0,0,51,236,100,100,100,100,102,108,100,100,100,100,100,102,108,100,118&m=g,13,13,7,13&m=g,7,13,7,9&m=s,4,6,2,6&m=s,2,6,2,9&m=s,2,9,0,9&m=g,7,9,1,9&m=g,1,9,1,7&m=g,1,7,6,7&m=g,6,7,6,10">
+      <a href="../solution.svg?goal=g,166&red=33&green=221&blue=29&yellow=213&silver=100&b=217,147,153,145,145,145,145,145,147,153,145,145,145,145,145,179,200,0,0,32,68,0,0,0,0,0,0,0,32,68,0,50,200,36,64,18,137,0,0,0,0,0,0,0,18,137,0,54,204,19,136,0,0,0,0,0,0,0,0,0,0,0,0,51,201,0,0,34,76,0,0,0,0,0,34,76,0,36,64,50,200,0,0,16,129,0,0,0,0,0,16,129,0,19,136,50,200,38,72,0,0,0,32,100,100,64,0,0,0,0,38,122,200,17,128,0,0,0,50,256,257,200,0,0,0,0,17,178,200,0,0,0,0,0,50,258,259,200,0,0,0,0,0,50,200,0,36,64,0,0,16,145,145,128,0,0,0,0,0,50,200,0,19,136,0,32,68,0,32,68,0,0,0,0,0,50,204,0,0,0,0,18,137,0,18,137,38,72,0,0,0,50,201,0,0,34,76,0,0,0,0,0,17,128,0,34,76,50,200,0,0,16,129,0,38,72,0,36,64,0,0,16,129,54,200,0,0,0,0,0,17,128,0,19,136,0,0,0,0,51,236,100,100,100,100,102,108,100,100,100,100,100,102,108,100,118&m=g,13,13,7,13&m=g,7,13,7,9&m=s,4,6,2,6&m=s,2,6,2,9&m=s,2,9,0,9&m=g,7,9,1,9&m=g,1,9,1,7&m=g,1,7,6,7&m=g,6,7,6,10">
         solution.html?goal=g,166&red=33&green=221&blue=29&yellow=213&silver=100&b=217,147,153,145,145,145,145,145,147,153,145,145,145,145,145,179,200,0,0,32,68,0,0,0,0,0,0,0,32,68,0,50,200,36,64,18,137,0,0,0,0,0,0,0,18,137,0,54,204,19,136,0,0,0,0,0,0,0,0,0,0,0,0,51,201,0,0,34,76,0,0,0,0,0,34,76,0,36,64,50,200,0,0,16,129,0,0,0,0,0,16,129,0,19,136,50,200,38,72,0,0,0,32,100,100,64,0,0,0,0,38,122,200,17,128,0,0,0,50,256,257,200,0,0,0,0,17,178,200,0,0,0,0,0,50,258,259,200,0,0,0,0,0,50,200,0,36,64,0,0,16,145,145,128,0,0,0,0,0,50,200,0,19,136,0,32,68,0,32,68,0,0,0,0,0,50,204,0,0,0,0,18,137,0,18,137,38,72,0,0,0,50,201,0,0,34,76,0,0,0,0,0,17,128,0,34,76,50,200,0,0,16,129,0,38,72,0,36,64,0,0,16,129,54,200,0,0,0,0,0,17,128,0,19,136,0,0,0,0,51,236,100,100,100,100,102,108,100,100,100,100,100,102,108,100,118&m=g,13,13,7,13&m=g,7,13,7,9&m=s,4,6,2,6&m=s,2,6,2,9&m=s,2,9,0,9&m=g,7,9,1,9&m=g,1,9,1,7&m=g,1,7,6,7&m=g,6,7,6,10
       </a>
     </main>

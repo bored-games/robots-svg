@@ -605,5 +605,5 @@ function downloadSvg(svg, fileName) {
 
 
 f();
-const vvv = document.getElementById('solution-svg');
-//downloadSvg(vvv, "soln.png");
+const svgElement = document.getElementById('solution-svg');
+downloadSvg(svgElement, "soln.png");
