@@ -16,6 +16,7 @@ A javascript-based SVG and PNG generator for visualizing Ricochet Robots-style p
   **b** | `n1,...,n256` or `<base64 n1..n256>` | Either a comma-separated list of 256 numbers corresponding to wall-encodings, or a base64 encoded version of the data (with no commas).
   **hide** | `*` | Adding the `hide` parameter (followed by any optional argument) will suppress all paths for easily displaying unsolved puzzles. Note that the path information can still be extracted if present in the URL.
 
+---
 
   ### Example:
 
@@ -24,4 +25,4 @@ A javascript-based SVG and PNG generator for visualizing Ricochet Robots-style p
   ### Result:
   <p align="center"><img src="_examples/soln.png" width="800px" alt="" /></p>
 
-  Addition examples are available in the `_examples` directory.
+  Addition examples are available in the `/docs` directory.
