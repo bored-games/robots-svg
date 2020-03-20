@@ -298,19 +298,6 @@ const f = (() => {
   symbolMoveNum.setAttribute("id", "move-num");
   symbolMoveNum.appendChild(moveNumCircle);
 
-  
-  const goalHexagonPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  goalHexagonPath.setAttribute("height", "1");
-  goalHexagonPath.setAttribute("width", "1");
-  goalHexagonPath.setAttribute("d", "M0,0.5 L0.25,0.07 0.75,.07 1,.5 0.75,.93 0.25,.93 0,0.5");
-  goalHexagonPath.setAttribute("stroke-width", ".05");
-  const symbolGoal = document.createElementNS("http://www.w3.org/2000/svg", "symbol");
-  symbolGoal.setAttribute("id", "goal");
-  symbolGoal.setAttribute("viewBox", "-.04 -0.04 16 16");
-  symbolGoal.setAttribute("transform", "scale(0.8, .8) translate(10, 10)");
-  symbolGoal.appendChild(goalHexagonPath);
-
-
   const blkRect = getRect("0", "0", "100", "100", "#7a776d", "none", "5", "1");
   const blkPolyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
   blkPolyline.setAttribute("points", "0,0 0,110 -10,100 110,100");
@@ -341,7 +328,6 @@ const f = (() => {
   svg.appendChild(sq);
   svg.appendChild(symbolBlk);
   svg.appendChild(symbolMoveNum);
-  svg.appendChild(symbolGoal);
 
   for (y = 0; y < 16; y++) {
     for (x = 0; x < 16; x++) {
@@ -458,6 +444,19 @@ const f = (() => {
   if (["r", "g", "b", "y", "s"].includes(goalID[0]) && goalID[1] >= 0) {
     const goalToken = document.createElementNS('http://www.w3.org/2000/svg', 'use');
     
+      
+    const goalHexagonPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    goalHexagonPath.setAttribute("height", "1");
+    goalHexagonPath.setAttribute("width", "1");
+    goalHexagonPath.setAttribute("d", "M0,0.5 L0.25,0.07 0.75,.07 1,.5 0.75,.93 0.25,.93 0,0.5");
+    goalHexagonPath.setAttribute("stroke-width", ".05");
+    const symbolGoal = document.createElementNS("http://www.w3.org/2000/svg", "symbol");
+    symbolGoal.setAttribute("id", "goal");
+    symbolGoal.setAttribute("viewBox", "-.04 -0.04 16 16");
+    symbolGoal.setAttribute("transform", "scale(0.8, .8) translate(10, 10)");
+    symbolGoal.appendChild(goalHexagonPath);
+
+    
     switch (goalID[0]) {
       case 'r':
         goalHexagonPath.setAttribute("fill", "#e19a97");
@@ -484,7 +483,9 @@ const f = (() => {
     goalToken.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#goal');
     goalToken.setAttribute("x", 100 * (goalID[1] % 16));
     goalToken.setAttribute("y", 100 * Math.floor(goalID[1] / 16));
+    svg.appendChild(symbolGoal);
     svg.appendChild(goalToken);
+
   }
 
   
