@@ -595,8 +595,10 @@ function downloadSvg(svg, fileName) {
         var blob = canvas.msToBlob();         
         navigator.msSaveOrOpenBlob(blob, fileName);
     } else {
-        var imgURI = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        triggerDownload(imgURI, fileName);
+       // var imgURI = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+       // triggerDownload(imgURI, fileName); // trigger a download
+        var imgURI = canvas.toDataURL("image/png");
+        window.location = imgURI; // navigate to the base64 png
     }
     document.removeChild(canvas);
   };
