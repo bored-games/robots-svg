@@ -277,7 +277,7 @@
     symbolSqIDl.appendChild(getRect("0", "0", "100", "100", "#e7d7ce", "#c5b8b0", "5", "1"));
     symbolSqIDl.appendChild(getRect("15", "15", "70", "70", "#f1e8e2", "#c8c9ca", "5", "0.6"));
     symbolSqIDl.appendChild( getPolyline("0,0 0,0", "none", "#1C1C1C", "20") );
-    symbolSqIDl.appendChild( getPolyline("100,0 100,100", "none", "#1C1C1C", "20") );
+    symbolSqIDl.appendChild( getPolyline("0,100 100,100", "none", "#1C1C1C", "20") );
     
     var sq = document.createElementNS("http://www.w3.org/2000/svg", "symbol");
     sq.setAttribute("id", "sq");
