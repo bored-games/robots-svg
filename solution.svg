@@ -12,10 +12,30 @@
     const greenID = urlParams.get('green');
     const yellowID = urlParams.get('yellow');
     const silverID = urlParams.get('silver');
+    const theme = urlParams.get('theme');
     var board = urlParams.get('b').split(',');
     var moves = urlParams.getAll('m');
     var hide = urlParams.get('hide');
     
+        
+    if (theme == "dark") {
+      var color_square_bg = "#1e1e20";
+      var color_square_bg_border = "#232328";
+      var color_square_fg = "#28282d";
+      var color_square_fg_border = "#31313d";
+      var color_wall = "#010203";
+      var color_center = "#131314";
+    } else {
+      var color_square_bg = "#e7d7ce";
+      var color_square_bg_border = "#c5b8b0";
+      var color_square_fg = "#f1e8e2";
+      var color_square_fg_border = "#c8c9ca";
+      var color_wall = "31313d";
+      var color_center = "#7a776d";
+    }
+
+
+
     if (board.length != 256) {
       board = Array.from(atob(decodeURIComponent(urlParams.get('b'))), (char) => char.charCodeAt());
     }
@@ -189,103 +209,103 @@
     symbolSqI.setAttribute("width", "100");
     symbolSqI.setAttribute("height", "100");
     symbolSqI.setAttribute("viewBox", "0 0 100 100");
-    symbolSqI.appendChild(getRect("0", "0", "100", "100", "#e7d7ce", "#c5b8b0", "5", "1"));
-    symbolSqI.appendChild(getRect("15", "15", "70", "70", "#f1e8e2", "#c8c9ca", "5", "0.6"));
-    symbolSqI.appendChild( getPolyline("0,0 0,110", "none", "#1C1C1C", "20") );
+    symbolSqI.appendChild(getRect("0", "0", "100", "100", color_square_bg, color_square_bg_border, "5", "1"));
+    symbolSqI.appendChild(getRect("15", "15", "70", "70", color_square_fg, color_square_fg_border, "5", "0.6"));
+    symbolSqI.appendChild( getPolyline("0,0 0,110", "none", color_wall, "20") );
 
     var symbolSqII = document.createElementNS("http://www.w3.org/2000/svg", "symbol");
     symbolSqII.setAttribute("id", "sqII");
     symbolSqII.setAttribute("width", "100");
     symbolSqII.setAttribute("height", "100");
     symbolSqII.setAttribute("viewBox", "0 0 100 100");
-    symbolSqII.appendChild(getRect("0", "0", "100", "100", "#e7d7ce", "#c5b8b0", "5", "1"));
-    symbolSqII.appendChild(getRect("15", "15", "70", "70", "#f1e8e2", "#c8c9ca", "5", "0.6"));
-    symbolSqII.appendChild( getPolyline("0,0 0,150 100,150 100,-50", "none", "#1C1C1C", "20") );
+    symbolSqII.appendChild(getRect("0", "0", "100", "100", color_square_bg, color_square_bg_border, "5", "1"));
+    symbolSqII.appendChild(getRect("15", "15", "70", "70", color_square_fg, color_square_fg_border, "5", "0.6"));
+    symbolSqII.appendChild( getPolyline("0,0 0,150 100,150 100,-50", "none", color_wall, "20") );
 
     var symbolSqL = document.createElementNS("http://www.w3.org/2000/svg", "symbol");
     symbolSqL.setAttribute("id", "sqL");
     symbolSqL.setAttribute("width", "100");
     symbolSqL.setAttribute("height", "100");
     symbolSqL.setAttribute("viewBox", "0 0 100 100");
-    symbolSqL.appendChild(getRect("0", "0", "100", "100", "#e7d7ce", "#c5b8b0", "5", "1"));
-    symbolSqL.appendChild(getRect("15", "15", "70", "70", "#f1e8e2", "#c8c9ca", "5", "0.6"));
-    symbolSqL.appendChild( getPolyline("0,0 0,100 110,100", "none", "#1C1C1C", "20") );
+    symbolSqL.appendChild(getRect("0", "0", "100", "100", color_square_bg, color_square_bg_border, "5", "1"));
+    symbolSqL.appendChild(getRect("15", "15", "70", "70", color_square_fg, color_square_fg_border, "5", "0.6"));
+    symbolSqL.appendChild( getPolyline("0,0 0,100 110,100", "none", color_wall, "20") );
 
     var symbolSqLD = document.createElementNS("http://www.w3.org/2000/svg", "symbol");
     symbolSqLD.setAttribute("id", "sqLD");
     symbolSqLD.setAttribute("width", "100");
     symbolSqLD.setAttribute("height", "100");
     symbolSqLD.setAttribute("viewBox", "0 0 100 100");
-    symbolSqLD.appendChild(getRect("0", "0", "100", "100", "#e7d7ce", "#c5b8b0", "5", "1"));
-    symbolSqLD.appendChild(getRect("15", "15", "70", "70", "#f1e8e2", "#c8c9ca", "5", "0.6"));
-    symbolSqLD.appendChild( getPolyline("100,0 100,0", "none", "#1C1C1C", "20") );
-    symbolSqLD.appendChild( getPolyline("0,0 0,100 110,100", "none", "#1C1C1C", "20") );
+    symbolSqLD.appendChild(getRect("0", "0", "100", "100", color_square_bg, color_square_bg_border, "5", "1"));
+    symbolSqLD.appendChild(getRect("15", "15", "70", "70", color_square_fg, color_square_fg_border, "5", "0.6"));
+    symbolSqLD.appendChild( getPolyline("100,0 100,0", "none", color_wall, "20") );
+    symbolSqLD.appendChild( getPolyline("0,0 0,100 110,100", "none", color_wall, "20") );
     
     var symbolSqU = document.createElementNS("http://www.w3.org/2000/svg", "symbol");
     symbolSqU.setAttribute("id", "sqU");
     symbolSqU.setAttribute("width", "100");
     symbolSqU.setAttribute("height", "100");
     symbolSqU.setAttribute("viewBox", "0 0 100 100");
-    symbolSqU.appendChild(getRect("0", "0", "100", "100", "#e7d7ce", "#c5b8b0", "5", "1"));
-    symbolSqU.appendChild(getRect("15", "15", "70", "70", "#f1e8e2", "#c8c9ca", "5", "0.6"));
-    symbolSqU.appendChild( getPolyline("0,0 0,100 100,100 100,0", "none", "#1C1C1C", "20") );
+    symbolSqU.appendChild(getRect("0", "0", "100", "100", color_square_bg, color_square_bg_border, "5", "1"));
+    symbolSqU.appendChild(getRect("15", "15", "70", "70", color_square_fg, color_square_fg_border, "5", "0.6"));
+    symbolSqU.appendChild( getPolyline("0,0 0,100 100,100 100,0", "none", color_wall, "20") );
     
     var symbolSqD = document.createElementNS("http://www.w3.org/2000/svg", "symbol");
     symbolSqD.setAttribute("id", "sqD");
     symbolSqD.setAttribute("width", "100");
     symbolSqD.setAttribute("height", "100");
     symbolSqD.setAttribute("viewBox", "0 0 100 100");
-    symbolSqD.appendChild(getRect("0", "0", "100", "100", "#e7d7ce", "#c5b8b0", "5", "1"));
-    symbolSqD.appendChild(getRect("15", "15", "70", "70", "#f1e8e2", "#c8c9ca", "5", "0.6"));
-    symbolSqD.appendChild( getPolyline("0,0 0,0", "none", "#1C1C1C", "20") );
+    symbolSqD.appendChild(getRect("0", "0", "100", "100", color_square_bg, color_square_bg_border, "5", "1"));
+    symbolSqD.appendChild(getRect("15", "15", "70", "70", color_square_fg, color_square_fg_border, "5", "0.6"));
+    symbolSqD.appendChild( getPolyline("0,0 0,0", "none", color_wall, "20") );
     
     var symbolSqDD = document.createElementNS("http://www.w3.org/2000/svg", "symbol");
     symbolSqDD.setAttribute("id", "sqDD");
     symbolSqDD.setAttribute("width", "100");
     symbolSqDD.setAttribute("height", "100");
     symbolSqDD.setAttribute("viewBox", "0 0 100 100");
-    symbolSqDD.appendChild(getRect("0", "0", "100", "100", "#e7d7ce", "#c5b8b0", "5", "1"));
-    symbolSqDD.appendChild(getRect("15", "15", "70", "70", "#f1e8e2", "#c8c9ca", "5", "0.6"));
-    symbolSqDD.appendChild( getPolyline("100,0 100,0", "none", "#1C1C1C", "20") );
-    symbolSqDD.appendChild( getPolyline("100,100 100,100", "none", "#1C1C1C", "20") );
+    symbolSqDD.appendChild(getRect("0", "0", "100", "100", color_square_bg, color_square_bg_border, "5", "1"));
+    symbolSqDD.appendChild(getRect("15", "15", "70", "70", color_square_fg, color_square_fg_border, "5", "0.6"));
+    symbolSqDD.appendChild( getPolyline("100,0 100,0", "none", color_wall, "20") );
+    symbolSqDD.appendChild( getPolyline("100,100 100,100", "none", color_wall, "20") );
     
     var symbolSqDDd = document.createElementNS("http://www.w3.org/2000/svg", "symbol");
     symbolSqDDd.setAttribute("id", "sqDDd");
     symbolSqDDd.setAttribute("width", "100");
     symbolSqDDd.setAttribute("height", "100");
     symbolSqDDd.setAttribute("viewBox", "0 0 100 100");
-    symbolSqDDd.appendChild(getRect("0", "0", "100", "100", "#e7d7ce", "#c5b8b0", "5", "1"));
-    symbolSqDDd.appendChild(getRect("15", "15", "70", "70", "#f1e8e2", "#c8c9ca", "5", "0.6"));
-    symbolSqDDd.appendChild( getPolyline("0,0 0,0", "none", "#1C1C1C", "20") );
-    symbolSqDDd.appendChild( getPolyline("100,100 100,100", "none", "#1C1C1C", "20") );
+    symbolSqDDd.appendChild(getRect("0", "0", "100", "100", color_square_bg, color_square_bg_border, "5", "1"));
+    symbolSqDDd.appendChild(getRect("15", "15", "70", "70", color_square_fg, color_square_fg_border, "5", "0.6"));
+    symbolSqDDd.appendChild( getPolyline("0,0 0,0", "none", color_wall, "20") );
+    symbolSqDDd.appendChild( getPolyline("100,100 100,100", "none", color_wall, "20") );
     
     var symbolSqIDr = document.createElementNS("http://www.w3.org/2000/svg", "symbol");
     symbolSqIDr.setAttribute("id", "sqIDr");
     symbolSqIDr.setAttribute("width", "100");
     symbolSqIDr.setAttribute("height", "100");
     symbolSqIDr.setAttribute("viewBox", "0 0 100 100");
-    symbolSqIDr.appendChild(getRect("0", "0", "100", "100", "#e7d7ce", "#c5b8b0", "5", "1"));
-    symbolSqIDr.appendChild(getRect("15", "15", "70", "70", "#f1e8e2", "#c8c9ca", "5", "0.6"));
-    symbolSqIDr.appendChild( getPolyline("0,0 0,0", "none", "#1C1C1C", "20") );
-    symbolSqIDr.appendChild( getPolyline("100,0 100,100", "none", "#1C1C1C", "20") );
+    symbolSqIDr.appendChild(getRect("0", "0", "100", "100", color_square_bg, color_square_bg_border, "5", "1"));
+    symbolSqIDr.appendChild(getRect("15", "15", "70", "70", color_square_fg, color_square_fg_border, "5", "0.6"));
+    symbolSqIDr.appendChild( getPolyline("0,0 0,0", "none", color_wall, "20") );
+    symbolSqIDr.appendChild( getPolyline("100,0 100,100", "none", color_wall, "20") );
     
     var symbolSqIDl = document.createElementNS("http://www.w3.org/2000/svg", "symbol");
     symbolSqIDl.setAttribute("id", "sqIDl");
     symbolSqIDl.setAttribute("width", "100");
     symbolSqIDl.setAttribute("height", "100");
     symbolSqIDl.setAttribute("viewBox", "0 0 100 100");
-    symbolSqIDl.appendChild(getRect("0", "0", "100", "100", "#e7d7ce", "#c5b8b0", "5", "1"));
-    symbolSqIDl.appendChild(getRect("15", "15", "70", "70", "#f1e8e2", "#c8c9ca", "5", "0.6"));
-    symbolSqIDl.appendChild( getPolyline("0,0 0,0", "none", "#1C1C1C", "20") );
-    symbolSqIDl.appendChild( getPolyline("0,100 100,100", "none", "#1C1C1C", "20") );
+    symbolSqIDl.appendChild(getRect("0", "0", "100", "100", color_square_bg, color_square_bg_border, "5", "1"));
+    symbolSqIDl.appendChild(getRect("15", "15", "70", "70", color_square_fg, color_square_fg_border, "5", "0.6"));
+    symbolSqIDl.appendChild( getPolyline("0,0 0,0", "none", color_wall, "20") );
+    symbolSqIDl.appendChild( getPolyline("0,100 100,100", "none", color_wall, "20") );
     
     var sq = document.createElementNS("http://www.w3.org/2000/svg", "symbol");
     sq.setAttribute("id", "sq");
     sq.setAttribute("width", "100");
     sq.setAttribute("height", "100");
     sq.setAttribute("viewBox", "0 0 100 100");
-    sq.appendChild(getRect("0", "0", "100", "100", "#e7d7ce", "#c5b8b0", "5", "1"));
-    sq.appendChild(getRect("15", "15", "70", "70", "#f1e8e2", "#c8c9ca", "5", "0.6"));
+    sq.appendChild(getRect("0", "0", "100", "100", color_square_bg, color_square_bg_border, "5", "1"));
+    sq.appendChild(getRect("15", "15", "70", "70", color_square_fg, color_square_fg_border, "5", "0.6"));
 
     const moveNumCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     moveNumCircle.setAttribute("cx", "50");
@@ -299,11 +319,11 @@
     symbolMoveNum.setAttribute("id", "move-num");
     symbolMoveNum.appendChild(moveNumCircle);
 
-    const blkRect = getRect("0", "0", "100", "100", "#7a776d", "none", "5", "1");
+    const blkRect = getRect("0", "0", "100", "100", color_center, "none", "5", "1");
     const blkPolyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
     blkPolyline.setAttribute("points", "0,0 0,110 -10,100 110,100");
     blkPolyline.setAttribute("fill", "none");
-    blkPolyline.setAttribute("stroke", "#1C1C1C");
+    blkPolyline.setAttribute("stroke", color_wall);
     blkPolyline.setAttribute("stroke-width", "20");
     const symbolBlk = document.createElementNS("http://www.w3.org/2000/svg", "symbol");
     symbolBlk.setAttribute("id", "sq-blk");

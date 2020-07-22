@@ -15,6 +15,7 @@ A javascript-based SVG and PNG generator for visualizing Ricochet Robots-style p
   **m**\* | `c,n,sx,sy,ex,ey` | Each move is represented by a color `c ∈ {r, g, b, y, s}`, a starting coordinate `(sx, sy)` and an ending coordinate `(ex, ey)`. Any number of **m** can be included in the URL. Moves will be numbered from first to last as they appear in the URL string.
   **b** | `n1,...,n256` or `<base64 n1..n256>` | Either a comma-separated list of 256 numbers corresponding to wall-encodings, or a base64 encoded version of the data (with no commas).
   **hide** | `*` | Adding the `hide` parameter (followed by any optional argument) will suppress all paths for easily displaying unsolved puzzles. Note that the path information can still be extracted if present in the URL.
+  **theme** | `"dark"`, `*` | (opt.) switch the board colors to a dark theme.
 
 ---
 
