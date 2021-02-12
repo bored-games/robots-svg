@@ -26,7 +26,7 @@ const f = (() => {
     var color_square_bg_border = "#c5b8b0";
     var color_square_fg = "#f1e8e2";
     var color_square_fg_border = "#c8c9ca";
-    var color_wall = "31313d";
+    var color_wall = "#31313d";
     var color_center = "#7a776d";
   }
 
