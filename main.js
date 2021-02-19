@@ -1,4 +1,3 @@
-
 const f = (() => {
 
   const urlParams = new URLSearchParams(window.location.search);
@@ -11,7 +10,7 @@ const f = (() => {
   const theme = urlParams.get('theme');
   var board = urlParams.get('b').split(',');
   var moves = urlParams.getAll('m');
-  var hide = urlParams.get('hide');
+  var hide = urlParams.has('hide');
   
       
   if (theme == "dark") {
@@ -584,9 +583,12 @@ function triggerDownload(imgURI, fileName) {
 }
 
 function downloadSvg(fileName) {
-  
-  const svg = document.getElementById('svg');
+  const urlParams = new URLSearchParams(window.location.search);
+  var noredirect = urlParams.has('noredirect');
+  var download = urlParams.has('download');
 
+  var svg = document.getElementById('svg');
+    
   var copy = svg.cloneNode(true);
   copyStylesInline(copy, svg);
   var canvas = document.createElement("canvas");
@@ -607,10 +609,13 @@ function downloadSvg(fileName) {
         var blob = canvas.msToBlob();         
         navigator.msSaveOrOpenBlob(blob, fileName);
     } else {
-       // var imgURI = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-       // triggerDownload(imgURI, fileName); // trigger a download
-      var imgURI = canvas.toDataURL("image/png");
-      window.location = imgURI; // navigate to the base64 png
+      if (download) {
+       var imgURI = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+       triggerDownload(imgURI, fileName); // trigger a download
+      } else if (!noredirect) {
+        var imgURI = canvas.toDataURL("image/png");
+        window.location = imgURI; // navigate to the base64 png
+      }
     }
     document.removeChild(canvas);
   };
@@ -618,5 +623,4 @@ function downloadSvg(fileName) {
 }
 
 f();
-
 downloadSvg("soln.png");
