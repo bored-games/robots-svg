@@ -428,7 +428,7 @@ const f = (() => {
       } else if ([67, 83, 243].includes(cellID)) { // s67
         use.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#sqLD');
         use.setAttribute("transform", "rotate(180, " + (100*x+50) + ", " + (100*y+50) + ")");
-      } else if ( cellID == 134 ) { // s134
+      } else if ([134, 246].includes(cellID)) { // s134
         use.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#sqLD');
         use.setAttribute("transform", "rotate(270, " + (100*x+50) + ", " + (100*y+50) + ")");
       } else if ( cellID == 48 ) { // s48
