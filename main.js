@@ -528,7 +528,6 @@ const f = (() => {
     svg.appendChild( makeRobot(silverID, 's') );
   }
 
-  console.log(hide);
   if (hide == null) {
     for (cnt = 0; cnt < moves.length; cnt++) {
         m = moves[cnt].split(",");
@@ -553,7 +552,7 @@ const f = (() => {
         svg.appendChild( makeMoveText(m[1], m[2], cnt+1) );
     }
   }
-    
+
 });
 
 
@@ -584,7 +583,10 @@ function triggerDownload(imgURI, fileName) {
   a.dispatchEvent(evt);
 }
 
-function downloadSvg(svg, fileName) {
+function downloadSvg(fileName) {
+  
+  const svg = document.getElementById('svg');
+
   var copy = svg.cloneNode(true);
   copyStylesInline(copy, svg);
   var canvas = document.createElement("canvas");
@@ -607,15 +609,14 @@ function downloadSvg(svg, fileName) {
     } else {
        // var imgURI = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
        // triggerDownload(imgURI, fileName); // trigger a download
-        var imgURI = canvas.toDataURL("image/png");
-        window.location = imgURI; // navigate to the base64 png
+      var imgURI = canvas.toDataURL("image/png");
+      window.location = imgURI; // navigate to the base64 png
     }
     document.removeChild(canvas);
   };
   img.src = url;
 }
 
-
 f();
-const svgElement = document.getElementById('solution-svg');
-downloadSvg(svgElement, "soln.png");
+
+downloadSvg("soln.png");
