@@ -15,7 +15,7 @@
     const theme = urlParams.get('theme');
     var board = urlParams.get('b').split(',');
     var moves = urlParams.getAll('m');
-    var hide = urlParams.get('hide');
+    var hide = urlParams.has('hide');
     
         
     if (theme == "dark") {
@@ -464,40 +464,51 @@
 
     if (["r", "g", "b", "y", "s"].includes(goalID[0]) && goalID[1] >= 0) {
       const goalToken = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-      
-        
-      const goalHexagonPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
-      goalHexagonPath.setAttribute("height", "1");
-      goalHexagonPath.setAttribute("width", "1");
-      goalHexagonPath.setAttribute("d", "M0,0.5 L0.25,0.07 0.75,.07 1,.5 0.75,.93 0.25,.93 0,0.5");
-      goalHexagonPath.setAttribute("stroke-width", ".05");
+              
+      const goalInner = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      goalInner.setAttribute("cx", "0.5");
+      goalInner.setAttribute("cy", "0.5");
+      goalInner.setAttribute("r", "0.175");
+      goalInner.setAttribute("stroke-width", "0");
+      goalInner.setAttribute("opacity", "1");
+      const goalOuter = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      goalOuter.setAttribute("cx", "0.5");
+      goalOuter.setAttribute("cy", "0.5");
+      goalOuter.setAttribute("r", "0.4");
+      goalOuter.setAttribute("stroke-width", "0.15");
+      goalOuter.setAttribute("opacity", "1");
       const symbolGoal = document.createElementNS("http://www.w3.org/2000/svg", "symbol");
       symbolGoal.setAttribute("id", "goal");
-      symbolGoal.setAttribute("viewBox", "-.04 -0.04 16 16");
-      symbolGoal.setAttribute("transform", "scale(0.8, .8) translate(10, 10)");
-      symbolGoal.appendChild(goalHexagonPath);
-
+      symbolGoal.setAttribute("viewBox", "-0.04 -0.04 16 16");
+      symbolGoal.setAttribute("transform", "scale(0.75, 0.75) translate(12, 12)");
+      symbolGoal.appendChild(goalOuter);
+      symbolGoal.appendChild(goalInner);
       
       switch (goalID[0]) {
         case 'r':
-          goalHexagonPath.setAttribute("fill", "#e19a97");
-          goalHexagonPath.setAttribute("stroke", "#ac8582");
+          goalInner.setAttribute("fill", "#bf4945");
+          goalOuter.setAttribute("fill", "#e5cfcf");
+          goalOuter.setAttribute("stroke", "#bf4945");
           break;
         case 'g':
-          goalHexagonPath.setAttribute("fill", "#6bd14c");
-          goalHexagonPath.setAttribute("stroke", "#8bab81");
+          goalInner.setAttribute("fill", "#61bf45");
+          goalOuter.setAttribute("fill", "#d4e5cf");
+          goalOuter.setAttribute("stroke", "#61bf45");
           break;
         case 'b':
-          goalHexagonPath.setAttribute("fill", "#4C7DD1");
-          goalHexagonPath.setAttribute("stroke", "#8291ac");
+          goalInner.setAttribute("fill", "#4572bf");
+          goalOuter.setAttribute("fill", "#cfd7e5");
+          goalOuter.setAttribute("stroke", "#4572bf");
           break;
         case 'y':
-          goalHexagonPath.setAttribute("fill", "#c1a530");
-          goalHexagonPath.setAttribute("stroke", "#aca482");
+          goalInner.setAttribute("fill", "#c1a530");
+          goalOuter.setAttribute("fill", "#e5e1cf");
+          goalOuter.setAttribute("stroke", "#c1a530");
           break;
         case 's':
-          goalHexagonPath.setAttribute("fill", "#888888");
-          goalHexagonPath.setAttribute("stroke", "#777777");
+          goalInner.setAttribute("fill", "#777777");
+          goalOuter.setAttribute("fill", "#e5e5e5");
+          goalOuter.setAttribute("stroke", "#777777");
           break;
       }
       
@@ -506,7 +517,6 @@
       goalToken.setAttribute("y", 100 * Math.floor(goalID[1] / 16));
       svg.appendChild(symbolGoal);
       svg.appendChild(goalToken);
-
     }
 
     
@@ -532,8 +542,7 @@
       svg.appendChild( makeRobot(silverID, 's') );
     }
 
-    console.log(hide);
-    if (hide == null) {
+    if (!hide) {
       for (cnt = 0; cnt < moves.length; cnt++) {
           m = moves[cnt].split(",");
           m[1] = parseInt(m[1]);
