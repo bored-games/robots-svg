@@ -428,7 +428,7 @@ const f = (() => {
       } else if ([67, 83, 243].includes(cellID)) { // s67
         use.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#sqLD');
         use.setAttribute("transform", "rotate(180, " + (100*x+50) + ", " + (100*y+50) + ")");
-      } else if ([134, 246].includes(cellID)) { // s134
+      } else if ([134, 166, 246].includes(cellID)) { // s134
         use.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#sqLD');
         use.setAttribute("transform", "rotate(270, " + (100*x+50) + ", " + (100*y+50) + ")");
       } else if ( cellID == 48 ) { // s48
@@ -447,7 +447,10 @@ const f = (() => {
         use.setAttribute("transform", "rotate(90, " + (100*x+50) + ", " + (100*y+50) + ")");
       } else if ( cellID == 160 ) { // s160
         use.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#sqDDd');
+      } else if ( cellID == 0 ) { // s0
+        use.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#sq');
       } else {
+        console.log('Bad cellID: ' + cellID)
         use.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#sq');
       }
       
