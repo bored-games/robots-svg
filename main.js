@@ -30,9 +30,9 @@ const f = (() => {
   }
 
 
-
   if (board.length != 256) {
-    board = Array.from(atob(decodeURIComponent(urlParams.get('b'))), (char) => char.charCodeAt());
+    var boardstr = urlParams.get('b').replace(/-/g, "+").replace(/_/g, "/");
+    board = Array.from(atob(decodeURIComponent(boardstr)), (char) => char.charCodeAt());
   }
 
   if (board.length != 256 ) {
