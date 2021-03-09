@@ -16,8 +16,21 @@
     var board = urlParams.get('b').split(',');
     var moves = urlParams.getAll('m');
     var hide = urlParams.has('hide');
-    
-        
+
+
+    // color scheme: Tol bright, https://cran.r-project.org/web/packages/khroma/vignettes/tol.html
+    const light_red = "#edb9c0"; // old: "#ebc8c8";
+    const light_green = "#69876e"; // old: "#d0ebc8"
+    const light_blue = "#8598ab"; // old: "#C8D5EB"
+    const light_yellow = "#ccc69f"; // old: "#ebe6c8"
+    const light_silver = "#ebebeb";
+    const dark_red = "#EE6677"; // old: "#d14c4c"
+    const dark_green = "#228833"; // old: "#6bd14c"
+    const dark_blue = "#4477AA"; // old: "#4C7DD1"
+    const dark_yellow = "#CCBB44"; // old: "#d1bd4c"
+    const dark_silver = "#D1D1D1";
+
+
     if (theme == "dark") {
       var color_square_bg = "#1e1e20";
       var color_square_bg_border = "#232328";
@@ -72,16 +85,16 @@
       const returnPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
       switch (color) {
         case "r":
-          hexColor = "#e14a47";
+          hexColor = dark_red; // old: "e14a47"
           break;
         case "b":
-          hexColor = "#4C7DD1";
+          hexColor = dark_blue; // old: "4C7DD1"
           break;
         case "g":
-          hexColor = "#6bd14c";
+          hexColor = dark_green; // old: "6bd14c"
           break;
         case "y":
-          hexColor = "#c1a530";
+          hexColor = dark_yellow; // old: "c1a530"
           break;
         default:
           hexColor = "#888888";
@@ -172,37 +185,36 @@
       return moveText;
     }
 
+    
     const svg = document.getElementById("svg");
     svg.innerHTML = `<style>
         .st0{fill:#CCCCCC;stroke:#000000;stroke-width:2.2457;stroke-miterlimit:10;}
-        .st1r{fill:#ebc8c8;stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
-        .st1b{fill:#C8D5EB;stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
-        .st1g{fill:#d0ebc8;stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
-        .st1y{fill:#ebe6c8;stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
-        .st1s{fill:#ebebeb;stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
-        .st3r{fill:none;stroke:#d14c4c;stroke-width:7.2153;stroke-miterlimit:10;}
-        .st4r{fill:#d14c4c;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
-        .st3b{fill:none;stroke:#4C7DD1;stroke-width:7.2153;stroke-miterlimit:10;}
-        .st4b{fill:#4C7DD1;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
-        .st3g{fill:none;stroke:#6bd14c;stroke-width:7.2153;stroke-miterlimit:10;}
-        .st4g{fill:#6bd14c;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
-        .st3y{fill:none;stroke:#d1bd4c;stroke-width:7.2153;stroke-miterlimit:10;}
-        .st4y{fill:#d1bd4c;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
-        .st3s{fill:none;stroke:#d1d1d1;stroke-width:7.2153;stroke-miterlimit:10;}
-        .st4s{fill:#d1d1d1;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
+        .st1r{fill:${light_red};stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
+        .st1b{fill:${light_blue};stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
+        .st1g{fill:${light_green};stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
+        .st1y{fill:${light_yellow};stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
+        .st1s{fill:${light_silver};stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
+        .st3r{fill:none;stroke:${dark_red};stroke-width:7.2153;stroke-miterlimit:10;}
+        .st4r{fill:${dark_red};stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
+        .st3b{fill:none;stroke:${dark_blue};stroke-width:7.2153;stroke-miterlimit:10;}
+        .st4b{fill:${dark_blue};stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
+        .st3g{fill:none;stroke:${dark_green};stroke-width:7.2153;stroke-miterlimit:10;}
+        .st4g{fill:${dark_green};stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
+        .st3y{fill:none;stroke:${dark_yellow};stroke-width:7.2153;stroke-miterlimit:10;}
+        .st4y{fill:${dark_yellow};stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
+        .st3s{fill:none;stroke:${dark_silver};stroke-width:7.2153;stroke-miterlimit:10;}
+        .st4s{fill:${dark_silver};stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
         .st5{fill:#BABABA;stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
         .st6{fill:#5E5E5E;stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
         .st7{fill:#FFFFFF;fill-opacity:0.7;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
       </style>`;
 
-
     var defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
-    defs.appendChild(getArrowheads("#e14a47", "r"));
-    defs.appendChild(getArrowheads("#4C7DD1", "b"));
-    defs.appendChild(getArrowheads("#6bd14c", "g"));
-    defs.appendChild(getArrowheads("#c1a530", "y"));
+    defs.appendChild(getArrowheads(dark_red, "r"));
+    defs.appendChild(getArrowheads(dark_blue, "b"));
+    defs.appendChild(getArrowheads(dark_green, "g"));
+    defs.appendChild(getArrowheads(dark_yellow, "y"));
     defs.appendChild(getArrowheads("#888888", "s"));
-
 
     var symbolSqI = document.createElementNS("http://www.w3.org/2000/svg", "symbol");
     symbolSqI.setAttribute("id", "sqI");
