@@ -19,6 +19,11 @@
 
 
     // color scheme: Tol bright, https://cran.r-project.org/web/packages/khroma/vignettes/tol.html
+    const very_light_red = "#fae1e4";
+    const very_light_green = "#cfe5d2";
+    const very_light_blue = "#cfdae5";
+    const very_light_yellow = "#f2efda";
+    const very_light_silver = "#f0f0f0";
     const light_red = "#edb9c0"; // old: "#ebc8c8";
     const light_green = "#5dba6d"; // old: "#d0ebc8"
     const light_blue = "#699dd1"; // old: "#C8D5EB"
@@ -501,29 +506,29 @@
       
       switch (goalID[0]) {
         case 'r':
-          goalInner.setAttribute("fill", "#bf4945");
-          goalOuter.setAttribute("fill", "#e5cfcf");
-          goalOuter.setAttribute("stroke", "#bf4945");
+          goalInner.setAttribute("fill", dark_red);
+          goalOuter.setAttribute("fill", very_light_red);
+          goalOuter.setAttribute("stroke", dark_red);
           break;
         case 'g':
-          goalInner.setAttribute("fill", "#61bf45");
-          goalOuter.setAttribute("fill", "#d4e5cf");
-          goalOuter.setAttribute("stroke", "#61bf45");
+          goalInner.setAttribute("fill", dark_green);
+          goalOuter.setAttribute("fill", very_light_green);
+          goalOuter.setAttribute("stroke", dark_green);
           break;
         case 'b':
-          goalInner.setAttribute("fill", "#4572bf");
-          goalOuter.setAttribute("fill", "#cfd7e5");
-          goalOuter.setAttribute("stroke", "#4572bf");
+          goalInner.setAttribute("fill", dark_blue);
+          goalOuter.setAttribute("fill", very_light_blue);
+          goalOuter.setAttribute("stroke", dark_blue);
           break;
         case 'y':
-          goalInner.setAttribute("fill", "#c1a530");
-          goalOuter.setAttribute("fill", "#e5e1cf");
-          goalOuter.setAttribute("stroke", "#c1a530");
+          goalInner.setAttribute("fill", dark_yellow);
+          goalOuter.setAttribute("fill", very_light_yellow);
+          goalOuter.setAttribute("stroke", dark_yellow);
           break;
         case 's':
-          goalInner.setAttribute("fill", "#777777");
-          goalOuter.setAttribute("fill", "#e5e5e5");
-          goalOuter.setAttribute("stroke", "#777777");
+          goalInner.setAttribute("fill", "#888888");
+          goalOuter.setAttribute("fill", very_light_silver);
+          goalOuter.setAttribute("stroke", "#888888");
           break;
       }
       
