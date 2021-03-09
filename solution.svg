@@ -20,9 +20,9 @@
 
     // color scheme: Tol bright, https://cran.r-project.org/web/packages/khroma/vignettes/tol.html
     const light_red = "#edb9c0"; // old: "#ebc8c8";
-    const light_green = "#69876e"; // old: "#d0ebc8"
-    const light_blue = "#8598ab"; // old: "#C8D5EB"
-    const light_yellow = "#ccc69f"; // old: "#ebe6c8"
+    const light_green = "#5dba6d"; // old: "#d0ebc8"
+    const light_blue = "#699dd1"; // old: "#C8D5EB"
+    const light_yellow = "#e5d673"; // old: "#ebe6c8"
     const light_silver = "#ebebeb";
     const dark_red = "#EE6677"; // old: "#d14c4c"
     const dark_green = "#228833"; // old: "#6bd14c"
@@ -149,7 +149,7 @@
         <path class="st4`+a+`" d="M221.6,139.6c-12.9,10.4-19.3,16.7-19.6,16.6c-0.3-0.2,4,7.6,4,7.6l6.9-5.6l11.8-13.3L221.6,139.6z"/>
         <path class="st1`+a+`" d="M153.2,264c-2.9,0.3-65.6,0.6-77-26c-2.3-5.2-3.3-13.2,9-43c8-19.5,22.4-42.9,39-68h57.6 c16.6,25.1,31,48.5,39,68c12.3,29.8,11.3,37.8,9,43c-11.4,26.6-74.1,26.3-77,26"/>
         <path class="st4`+a+`" d="M229.8,238c-11.2,26.1-72.1,26.3-76.8,26c0.1,0,0.2,0,0.2,0h-0.4c0,0,0.1,0,0.2,0c-4.7,0.3-65.6,0.1-76.8-26 c-1.6-3.7-2.6-8.8,1.4-22.2c14,23.3,70.8,23.5,75.4,23.2c4.6,0.3,61.4,0.1,75.4-23.2C232.4,229.2,231.4,234.3,229.8,238z"/>
-        <path class="st3`+a+`" d="M83,203.8c46,25.2,96.9,26.2,140-0.8"/>
+        <path class="st3`+a+`" d="M83,193.8c46,25.2,96.9,26.2,140-0.8"/>
         <path d="M164,265l-15.9-1c-14.1,0-11.1,2-25.6-4v-24.9c0-14.1,11.5-25.6,25.6-25.6h9.9c14.1,0,25.6,11.5,25.6,25.6L184,262 C176,264,178.1,265,164,265z"/>
         <path class="st4`+a+`" d="M164.6,142h-23.3c-27.7,0-53.4-6.4-53.4-38.7v0c0-32.3,25.7-58.7,53.4-58.7h23.3c27.7,0,53.4,26.4,53.4,58.7v0 C218,135.6,192.3,142,164.6,142z"/>
         <path class="st0" d="M154.2,59c0,0,1.8,0-2.3,0c-9.2,0-13.8-6-13.8-6s6.3-5.1,8.5-10c3.1-7,3.8-10,4.6-22h3.8c0.8,12,1.5,15,4.6,22 c2.2,4.9,8.5,10,8.5,10S163.4,59,154.2,59c-4.2,0-2.3,0-2.3,0"/>
@@ -194,15 +194,15 @@
         .st1g{fill:${light_green};stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
         .st1y{fill:${light_yellow};stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
         .st1s{fill:${light_silver};stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
-        .st3r{fill:none;stroke:${dark_red};stroke-width:7.2153;stroke-miterlimit:10;}
+        .st3r{fill:none;stroke:${dark_red};stroke-width:27.2153;stroke-miterlimit:10;}
         .st4r{fill:${dark_red};stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
-        .st3b{fill:none;stroke:${dark_blue};stroke-width:7.2153;stroke-miterlimit:10;}
+        .st3b{fill:none;stroke:${dark_blue};stroke-width:27.2153;stroke-miterlimit:10;}
         .st4b{fill:${dark_blue};stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
-        .st3g{fill:none;stroke:${dark_green};stroke-width:7.2153;stroke-miterlimit:10;}
+        .st3g{fill:none;stroke:${dark_green};stroke-width:27.2153;stroke-miterlimit:10;}
         .st4g{fill:${dark_green};stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
-        .st3y{fill:none;stroke:${dark_yellow};stroke-width:7.2153;stroke-miterlimit:10;}
+        .st3y{fill:none;stroke:${dark_yellow};stroke-width:27.2153;stroke-miterlimit:10;}
         .st4y{fill:${dark_yellow};stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
-        .st3s{fill:none;stroke:${dark_silver};stroke-width:7.2153;stroke-miterlimit:10;}
+        .st3s{fill:none;stroke:${dark_silver};stroke-width:27.2153;stroke-miterlimit:10;}
         .st4s{fill:${dark_silver};stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
         .st5{fill:#BABABA;stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
         .st6{fill:#5E5E5E;stroke:#000000;stroke-width:2.5;stroke-miterlimit:10;}
